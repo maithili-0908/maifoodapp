@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { menu } from "./menu.js";
 
 const deliveryFee = 49;
+
 const validStatuses = [
   "Kitchen received your order",
   "Kitchen started working on your order",
@@ -13,11 +14,16 @@ const validStatuses = [
   "Your order is on the way",
   "Delivered"
 ];
+
 const orders = new Map();
 const orderTimers = new Map();
 
 export const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: "https://maifoodapp.netlify.app"
+}));
+
 app.use(express.json());
 
 function validateOrder(body) {
