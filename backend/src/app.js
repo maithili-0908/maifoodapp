@@ -85,6 +85,14 @@ function progressOrder(orderId, preparationMinutes) {
   });
   orderTimers.set(orderId, timers);
 }
+app.get("/", (_req, res) => {
+  res.json({
+    message: "Mai Food Delivery API is running!",
+    status: "ok",
+    menu: "/api/menu",
+    health: "/api/health"
+  });
+});
 
 app.get("/api/health", (_req, res) => res.json({ status: "ok" }));
 
